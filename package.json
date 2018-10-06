@@ -1,0 +1,10 @@
+{
+  "name": "reason2wat",
+  "version": "0.0.1",
+  "description": "transpiles Reason code to wat (readable WebAssembly)",
+  "main": "index.js",
+  "repository": "https://github.com/ziel5122/reason2wat",
+  "author": "ziel5122",
+  "license": "MIT",
+  "private": true
+}
