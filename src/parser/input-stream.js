@@ -1,30 +1,33 @@
-const InputStream = (input) => {
-  let col = 0
-  let line = 1
-  let pos = 0
+const { EOL } = require('os')
 
-  const peek = () => input.charAt(pos)
+const InputStream = (input) => {
+  let index = 0
+  let line = 1
+  let col = 0
+
+  let c = input.charAt(index)
+
+  const generator = function * () {
+    while (true) {
+      yield c
+      if (c === EOL) {
+        line++
+        col = 0
+      } else {
+        col++
+      }
+      index++
+      c = input.charAt(index)
+    }
+  }()
 
   const next = () => {
-    const c = input.charAt(pos)
-    pos++
-    if (c === '\n') {
-      line++
-      col = 0
-    } else {
-      col++
-    }
-    return c
+    return generator.next().value
   }
-  const eof = () => peek() === ''
 
-  const croak = (msg) => {
-    throw new Error(`${msg} (${line}:${col})`)
-  }
+  const peek = () => c
 
   return {
-    croak,
-    eof,
     next,
     peek,
   }

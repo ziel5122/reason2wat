@@ -1,11 +1,13 @@
-const { instantiate } = require('./wasm')
+const { join } = require('path')
 
-const filename = './math.wasm'
+const { instantiate } = require('../wasm')
+
+const MATH_WASM_FILE_PATH = join(__dirname, 'math.wasm')
 
 let add, divide, multiply, subtract
 
 beforeAll(async () => {
-  const math = await instantiate(filename)
+  const math = await instantiate(MATH_WASM_FILE_PATH)
   add = math.add
   divide = math.divide
   multiply = math.multiply
