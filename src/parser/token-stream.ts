@@ -18,8 +18,6 @@ function TokenStream(input) {
 
 // const TokenStream = input => {
 
-//   const isKeyWord = t => !!keywords[t]
-
 //   const isOpChar = c => /[+-\*/%=&|>?!]/i.test(c)
 
 //   const isPunc = c => /[,;(){}\[\]]/i.test(c)
