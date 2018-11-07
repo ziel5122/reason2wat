@@ -9,7 +9,6 @@ function TokenStream(input) {
     var isKeyword = function (t) { return !!keywords[t]; };
 }
 // const TokenStream = input => {
-//   const isKeyWord = t => !!keywords[t]
 //   const isOpChar = c => /[+-\*/%=&|>?!]/i.test(c)
 //   const isPunc = c => /[,;(){}\[\]]/i.test(c)
 //   const isWhitespace = c => /[ \t\n]/i.test(c)

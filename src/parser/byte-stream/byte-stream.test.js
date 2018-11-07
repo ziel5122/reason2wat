@@ -2,10 +2,10 @@ const { readFileSync } = require('fs')
 const { EOL } = require('os')
 const { join } = require('path')
 
-const InputStream = require('./input-stream')
+const ByteStream = require('./byte-stream')
 
-const EMPTY_FILE_PATH = join(__dirname, 'test-files/empty.txt')
-const TEST_FILE_PATH = join(__dirname, 'test-files/test.txt')
+const EMPTY_FILE_PATH = join(__dirname, '../test-files/empty.txt')
+const TEST_FILE_PATH = join(__dirname, '../test-files/test.txt')
 
 describe('tests for InputStream next on empty file', () => {
   let emptyString
@@ -15,7 +15,7 @@ describe('tests for InputStream next on empty file', () => {
   })
 
   test('an empty file returns an empty string', () => {
-    const emptyStringStream = InputStream(emptyString)
+    const emptyStringStream = new ByteStream(emptyString)
     const expectedNext = ''
 
     const next = emptyStringStream.next()
@@ -24,7 +24,7 @@ describe('tests for InputStream next on empty file', () => {
   })
 
   test('an empty file returns an empty string after next is called', () => {
-    const emptyStringStream = InputStream(emptyString)
+    const emptyStringStream = new ByteStream(emptyString)
     const expectedNext = ''
 
     emptyStringStream.next()
@@ -42,7 +42,7 @@ describe('tests for InputStream next on non-empty file', () => {
   })
 
   test('a file with one letter returns the one letter', () => {
-    const nonEmptyStringStream = InputStream(nonEmptyString)
+    const nonEmptyStringStream = new ByteStream(nonEmptyString)
     const expectedNext = 't'
 
     const next = nonEmptyStringStream.next()
@@ -51,7 +51,7 @@ describe('tests for InputStream next on non-empty file', () => {
   })
 
   test('a file with one letter returns empty string after next is called', () => {
-    const nonEmptyStringStream = InputStream(nonEmptyString)
+    const nonEmptyStringStream = new ByteStream(nonEmptyString)
     const expectedNext = ''
 
     nonEmptyStringStream.next()
