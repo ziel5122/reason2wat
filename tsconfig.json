@@ -1,6 +1,0 @@
-{
-  "compilerOptions": {
-    "downlevelIteration": true,
-  },
-  "include": ["src/**/*.ts"]
-}

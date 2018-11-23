@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1542962751291" clover="3.2.0">
+  <project timestamp="1542962751291" name="All files">
+    <metrics statements="24" coveredstatements="22" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3" elements="32" coveredelements="28" complexity="0" loc="24" ncloc="24" packages="2" files="2" classes="2">
+      <package name="src">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <file name="wasm.js" path="/Users/austin/reason2wat/src/wasm.js">
+          <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.parser.byte-stream">
+        <metrics statements="17" coveredstatements="15" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="2"/>
+        <file name="byte-stream.js" path="/Users/austin/reason2wat/src/parser/byte-stream/byte-stream.js">
+          <metrics statements="17" coveredstatements="15" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="2"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="4" count="4" type="cond" truecount="1" falsecount="1"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="8" count="4" type="stmt"/>
+          <line num="9" count="4" type="stmt"/>
+          <line num="10" count="4" type="stmt"/>
+          <line num="11" count="4" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="15" count="7" type="stmt"/>
+          <line num="17" count="7" type="cond" truecount="2" falsecount="0"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="21" count="6" type="stmt"/>
+          <line num="24" count="7" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+          <line num="28" count="0" type="stmt"/>
+          <line num="31" count="1" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>

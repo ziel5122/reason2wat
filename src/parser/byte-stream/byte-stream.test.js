@@ -7,6 +7,26 @@ const ByteStream = require('./byte-stream')
 const EMPTY_FILE_PATH = join(__dirname, '../test-files/empty.txt')
 const TEST_FILE_PATH = join(__dirname, '../test-files/test.txt')
 
+describe('ByteStream constructor', () => {
+  const expectedErrorMessage = 'input must exist'
+
+  test("throws error 'input must exist' if input argument is null", () => {
+    try {
+      new ByteStream(null)
+    } catch (error) {
+      expect(error.message).toBe(expectedErrorMessage)
+    }
+  })
+
+  test("throws error 'input must exist' if input argument is undefined", () => {
+    try {
+      new ByteStream()
+    } catch (error) {
+      expect(error.message).toBe(expectedErrorMessage)
+    }
+  })
+})
+
 describe('tests for InputStream next on empty file', () => {
   let emptyString
 

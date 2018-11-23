@@ -21,19 +21,7 @@ describe('tests for isDigit method', () => {
       expect(receivedIsDigit).toBe(expectedIsDigit)
     },
   )
-
-  test(
-    'isDigit returns false given String representation of two-digit Number', 
-    () => {
-      const s = '54'
-      const expectedIsDigit = false
-
-      const receivedIsDigit = isDigit(s)
-
-      expect(receivedIsDigit).toBe(expectedIsDigit)
-    },
-  )
-
+  
   test('isDigit returns false given Null', () => {
     const n = null
     const expectedIsDigit = false
