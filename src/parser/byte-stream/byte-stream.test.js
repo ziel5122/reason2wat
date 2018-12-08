@@ -8,23 +8,29 @@ const EMPTY_FILE_PATH = join(__dirname, '../test-files/empty.txt')
 const TEST_FILE_PATH = join(__dirname, '../test-files/test.txt')
 
 describe('ByteStream constructor', () => {
-  const expectedErrorMessage = 'input must exist'
+  const expectedErrorMessage = 'input must be type String'
 
-  test("throws error 'input must exist' if input argument is null", () => {
-    try {
-      new ByteStream(null)
-    } catch (error) {
-      expect(error.message).toBe(expectedErrorMessage)
-    }
-  })
+  test(
+    "throws error 'input must be type String' if input argument is null", 
+    () => {
+      try {
+        ByteStream(null)
+      } catch (error) {
+        expect(error.message).toBe(expectedErrorMessage)
+      }
+    },
+  )
 
-  test("throws error 'input must exist' if input argument is undefined", () => {
-    try {
-      new ByteStream()
-    } catch (error) {
-      expect(error.message).toBe(expectedErrorMessage)
-    }
-  })
+  test(
+    "throws error 'input must be type String' if input argument is undefined", 
+    () => {
+      try {
+        ByteStream()
+      } catch (error) {
+        expect(error.message).toBe(expectedErrorMessage)
+      }
+    },
+  )
 })
 
 describe('tests for InputStream next on empty file', () => {
@@ -35,7 +41,7 @@ describe('tests for InputStream next on empty file', () => {
   })
 
   test('an empty file returns an empty string', () => {
-    const emptyStringStream = new ByteStream(emptyString)
+    const emptyStringStream = ByteStream(emptyString)
     const expectedNext = ''
 
     const next = emptyStringStream.next()
@@ -44,7 +50,7 @@ describe('tests for InputStream next on empty file', () => {
   })
 
   test('an empty file returns an empty string after next is called', () => {
-    const emptyStringStream = new ByteStream(emptyString)
+    const emptyStringStream = ByteStream(emptyString)
     const expectedNext = ''
 
     emptyStringStream.next()
@@ -62,7 +68,7 @@ describe('tests for InputStream next on non-empty file', () => {
   })
 
   test('a file with one letter returns the one letter', () => {
-    const nonEmptyStringStream = new ByteStream(nonEmptyString)
+    const nonEmptyStringStream = ByteStream(nonEmptyString)
     const expectedNext = 't'
 
     const next = nonEmptyStringStream.next()
@@ -71,7 +77,7 @@ describe('tests for InputStream next on non-empty file', () => {
   })
 
   test('a file with one letter returns empty string after next is called', () => {
-    const nonEmptyStringStream = new ByteStream(nonEmptyString)
+    const nonEmptyStringStream = ByteStream(nonEmptyString)
     const expectedNext = ''
 
     nonEmptyStringStream.next()

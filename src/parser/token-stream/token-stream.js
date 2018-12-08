@@ -7,48 +7,79 @@ const {
   isWhitespace,
 } = require('./utils.js')
 
-
 function TokenStream(input) {
-  if (input == null) {
-    throw new Error('input must exist')
+  if (typeof input !== 'string') {
+    throw new TypeError('input must be type String')
   }
 
-  this.input = input
-  this.token = null
-} 
+  let token = null
 
-TokenStream.prototype.readWhile = function(predicate) {
-  const s = []
-  let c = this.input.peek()
-  while (!isEof(c) && predicate(c)) {
-    s.push(this.input.next())
-    c = this.input.peek()
-  }
-  return s.join('')
-}
+  function readIdent() {
+    const id = readWhile(isId)
 
-TokenStream.prototype.readNext = function() {
-  this.readWhile(isWhitespace)
-
-  let c = this.input.peek()
-
-  if (isEof(c)) {
-    return null
+    return {
+      type: isKeyword(id) ? 'kw' : 'var'
+      value: id,
+    }
   }
 
-  if (isDigit(c)) {
-    console.log('digit')
+  function readNext() {
+    readWhile(isWhitespace)
+
+    let c = input.peek()
+
+    if (isEof(c)) {
+      return null
+    }
+  
+    if (isDigit(c)) {
+      return readNumber()
+    }
+  
+    if (isIdStart(c)) {
+      return readIdent()
+    }
+  
+    if (isOperator(c)) {
+      return {
+        type: 'op',
+        value: readWhile(isOp),
+      }
+    }
+  
+    if (isPunctuation(c)) {
+      return {
+        type: 'punc',
+        value: input.next()
+      }
+    }
   }
 
-  if (isIdStart(c)) {
-    console.log('id start')
+  function readNumber() {
+    let hasDot = false
+
+    const number = readWhile(c => {
+      if (c === '.') {
+        if (hasDot) {
+          return false
+        }
+
+        return hasDot = true
+      }
+
+      return isDigit(c)
+    })
+
+    return { type: 'Number', value: parseFloat(number) }
   }
 
-  if (isOperator(c)) {
-    console.log('operator')
-  }
+  function readWhile(predicate) {
+    const s = []
 
-  if (isPunctuation(c)) {
-    console.log('punctuation')
+    for (let c = input.peek(); !isEof(c) && predicate(c); c = input.peek()) {
+      s.push(input.next())
+    }
+    
+    return s.join('')
   }
 }

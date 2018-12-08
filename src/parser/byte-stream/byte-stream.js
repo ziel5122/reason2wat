@@ -1,31 +1,37 @@
 const { EOL } = require('os')
 
 function ByteStream(input) {
-  if (input == null) {
-    throw new Error('input must exist')
+  if (typeof input !== 'string') {
+    throw new TypeError('input must be type String')
   }
 
-  this.col = 0
-  this.index = 0
-  this.input = input
-  this.line = 1
-}
+  let col = 0
+  let index = 0
+  let line = 1
 
-ByteStream.prototype.next = function() {
-  const c = this.input.charAt(this.index++)
+  function next() {
+    const c = input.charAt(index)
+    index++
 
-  if (c === EOL) {
-    this.line++
-    this.col = 0
-  } else {
-    this.col++
+    if (c === EOL) {
+      line++
+      col = 0
+    } else {
+      col++
+    }
+
+    return c
   }
 
-  return c
-}
+  function peek() {
+    return input.charAt(index)
+  }
 
-ByteStream.prototype.peek = function () {
-  return this.input.charAt(this.index)
+  return {
+    next,
+    peek,
+  }
 }
 
 module.exports = ByteStream
+
