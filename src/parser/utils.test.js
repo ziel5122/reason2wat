@@ -1,7 +1,29 @@
-const { isDigit } = require('./utils.js')
+const { isDigit, isEof } = require('./utils.js')
 
-describe('tests for isDigit method', () => {
-  test('isDigit returns true given String representation of a digit', () => {
+function testNullAndUndefined(f) {
+  test('returns false given Null', () => {
+    const n = null
+    const expected = false
+
+    const received = f(n)
+
+    expect(received).toBe(expected)
+  })
+
+  test('returns false given Undefined', () => {
+    const u = undefined
+    const expected = false
+
+    const received = f(u)
+
+    expect(received).toBe(expected)
+  })
+}
+
+describe('isDigit', () => {
+  testNullAndUndefined(isDigit)
+
+  test('returns true given String representation of a digit', () => {
     const s = '5'
     const expectedIsDigit = true
 
@@ -10,9 +32,7 @@ describe('tests for isDigit method', () => {
     expect(receivedIsDigit).toBe(expectedIsDigit)
   })
 
-  test(
-    'isDigit returns false given String representation of non-digit', 
-    () => {
+  test('returns false given String representation of non-digit', () => {
       const s = 'f'
       const expectedIsDigit = false
 
@@ -21,26 +41,8 @@ describe('tests for isDigit method', () => {
       expect(receivedIsDigit).toBe(expectedIsDigit)
     },
   )
-  
-  test('isDigit returns false given Null', () => {
-    const n = null
-    const expectedIsDigit = false
 
-    const receivedIsDigit = isDigit(n)
-
-    expect(receivedIsDigit).toBe(expectedIsDigit)
-  })
-
-  test('isDigit returns false given Undefined', () => {
-    const u = undefined
-    const expectedIsDigit = false
-
-    const receivedIsDigit = isDigit(u)
-
-    expect(receivedIsDigit).toBe(expectedIsDigit)
-  })
-
-  test('isDigit returns false given Boolean', () => {
+  test('returns false given Boolean', () => {
     const b = true
     const expectedIsDigit = false
 
@@ -49,7 +51,7 @@ describe('tests for isDigit method', () => {
     expect(receivedIsDigit).toBe(expectedIsDigit)
   })
 
-  test('isDigit returns false given Object', () => {
+  test('returns false given Object', () => {
     const o = {}
     const expectedIsDigit = false
 
@@ -57,4 +59,8 @@ describe('tests for isDigit method', () => {
 
     expect(receivedIsDigit).toBe(expectedIsDigit)
   })
+})
+
+describe('isId', () => {
+  testNullAndUndefined(isEof)
 })

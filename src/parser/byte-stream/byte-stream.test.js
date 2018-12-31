@@ -33,7 +33,7 @@ describe('ByteStream constructor', () => {
   )
 })
 
-describe('tests for InputStream next on empty file', () => {
+describe('tests for ByteStream next on empty file', () => {
   let emptyString
 
   beforeAll(() => {
@@ -60,7 +60,7 @@ describe('tests for InputStream next on empty file', () => {
   })
 })
 
-describe('tests for InputStream next on non-empty file', () => {
+describe('tests for ByteStream next on non-empty file', () => {
   let nonEmptyString
 
   beforeAll(() => {

@@ -1,6 +1,7 @@
 const { 
   isDigit, 
   isEof,
+  isKeyword,
   isIdStart,
   isOperator,
   isPunctuation,
@@ -18,7 +19,7 @@ function TokenStream(input) {
     const id = readWhile(isId)
 
     return {
-      type: isKeyword(id) ? 'kw' : 'var'
+      type: isKeyword(id) ? 'keyword' : 'variable'
       value: id,
     }
   }
@@ -42,14 +43,14 @@ function TokenStream(input) {
   
     if (isOperator(c)) {
       return {
-        type: 'op',
+        type: 'operator',
         value: readWhile(isOp),
       }
     }
   
     if (isPunctuation(c)) {
       return {
-        type: 'punc',
+        type: 'punctuation',
         value: input.next()
       }
     }
@@ -70,7 +71,7 @@ function TokenStream(input) {
       return isDigit(c)
     })
 
-    return { type: 'Number', value: parseFloat(number) }
+    return { type: 'number', value: parseFloat(number) }
   }
 
   function readWhile(predicate) {

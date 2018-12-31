@@ -1,11 +1,11 @@
 const { EOF } = require('os')
 
-const DIGIT_REGEX = /[0-9]/
-const ID_REGEX = /[a-z0-9-_]/ 
-const ID_START_REGEX = /[a-z_]/
-const OPERATOR_REGEX = /[+\-\*/%=&|<>!]/ 
-const PUNCTUATION_REGEX = /[,;(){}\[\]]/
-const WHITESPACE_REGEX = /[ \t\n]/
+const DIGIT_REGEX = /^[0-9]$/
+const ID_REGEX = /^[a-z0-9-_]$/ 
+const ID_START_REGEX = /^[a-z_]$/
+const OPERATOR_REGEX = /^[+\-\*/%=&|<>!]$/ 
+const PUNCTUATION_REGEX = /^[,;(){}\[\]]$/
+const WHITESPACE_REGEX = /^[ \t\n]$/
 
 const KEYWORDS = {
   else: true,
